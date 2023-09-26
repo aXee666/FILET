@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Include necessary scripts and stylesheets -->
+    <script src="spotify.js"></script>
+    <script src="microphone.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Lakimies Ali Online Radio Station</h1>
+    </header>
+
+    <main>
+        <section class="radio-player">
+            <!-- Audio player for Spotify and microphone input -->
+            <audio id="radio-stream" controls></audio>
+        </section>
+
+        <section class="radio-details">
+            <h2>Now Playing:</h2>
+            <p id="song-title">Song Title</p>
+            <p id="artist-name">Artist Name</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Online Radio Station</p>
+    </footer>
+
+    <script>
+        // Initialize and control Spotify playback
+        const spotify = new SpotifyPlayer();
+        // Initialize and control microphone input
+        const microphone = new MicrophoneInput();
+
+        // Update "Now Playing" information for Spotify
+        spotify.on('play', (songInfo) => {
+            document.getElementById('song-title').textContent = songInfo.title;
+            document.getElementById('artist-name').textContent = songInfo.artist;
+        });
+
+        // Handle microphone input and streaming
+        microphone.on('data', (audioData) => {
+            // Send audioData to the server for streaming
+            // Update the audio player with the microphone input
+            const audioPlayer = document.getElementById('radio-stream');
+            // You'll need to implement logic to handle streaming here
+        });
+    </script>
+</body>
+</html>
